@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>InputWidget</class>
+ <widget class="QWidget" name="InputWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>659</width>
+    <height>410</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>659</width>
+    <height>410</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>659</width>
+    <height>410</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>输入商品信息</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">.InputWidget
+{
+background-color:rgb(38,38,38);
+}
+
+
+
+
+QAbstractSpinBox
+{
+	font: 14pt &quot;楷体&quot;;
+}
+
+QLineEdit
+{
+	font: 14pt &quot;楷体&quot;;
+}
+
+QComboBox
+{
+	font: 14pt &quot;楷体&quot;;
+}
+
+
+</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>47</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>商品名称</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_2">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>119</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>商品品牌</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="brandEdit">
+   <property name="geometry">
+    <rect>
+     <x>95</x>
+     <y>119</y>
+     <width>176</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="nameEdit">
+   <property name="geometry">
+    <rect>
+     <x>95</x>
+     <y>47</y>
+     <width>176</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>191</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>商品厂家</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="manuEdit">
+   <property name="geometry">
+    <rect>
+     <x>95</x>
+     <y>191</y>
+     <width>176</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>60</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>商品价格</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="priceBox">
+   <property name="geometry">
+    <rect>
+     <x>526</x>
+     <y>47</y>
+     <width>124</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <double>0.010000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>999999.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>130</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>商品成本</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="costBox">
+   <property name="geometry">
+    <rect>
+     <x>526</x>
+     <y>119</y>
+     <width>124</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <double>0.010000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>999999.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="value">
+    <double>1.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QLabel" name="weiOrCapaLab">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>200</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>商品重量</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="weightOrCapaBox">
+   <property name="geometry">
+    <rect>
+     <x>526</x>
+     <y>191</y>
+     <width>124</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="decimals">
+    <number>2</number>
+   </property>
+   <property name="minimum">
+    <double>0.010000000000000</double>
+   </property>
+   <property name="maximum">
+    <double>999999.000000000000000</double>
+   </property>
+   <property name="singleStep">
+    <double>1.000000000000000</double>
+   </property>
+   <property name="value">
+    <double>1.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="amountBox">
+   <property name="geometry">
+    <rect>
+     <x>526</x>
+     <y>263</y>
+     <width>121</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>999999</number>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_7">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>270</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>库存数量</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>9</x>
+     <y>263</y>
+     <width>80</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">	color: rgb(255, 255, 255);
+	font: 14pt &quot;楷体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>商品分类</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="kindBox">
+   <property name="geometry">
+    <rect>
+     <x>95</x>
+     <y>263</y>
+     <width>161</width>
+     <height>27</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="okBtn">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>340</y>
+     <width>111</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.189944 rgba(202, 144, 87, 255), stop:0.726257 rgba(235, 148, 61, 255), stop:1 rgba(143, 143, 143, 255));
+font: 9pt &quot;楷体&quot;;
+font-size:25px;
+color: rgb(255, 255, 255);
+border:none;
+border-radius:8px</string>
+   </property>
+   <property name="text">
+    <string>确定</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelBtn">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>340</y>
+     <width>115</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:0, stop:0.189944 rgba(202, 144, 87, 255), stop:0.726257 rgba(235, 148, 61, 255), stop:1 rgba(143, 143, 143, 255));
+font: 9pt &quot;楷体&quot;;
+font-size:25px;
+color: rgb(255, 255, 255);
+border:none;
+border-radius:8px</string>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
