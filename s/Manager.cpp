@@ -30,7 +30,7 @@ Manager::~Manager()
     }
 }
 
-bool Manager::ComExist(string name, string brand)
+bool Manager::comExist(string name, string brand)  //商品查重
 {
     bool b=false,c=false;
     auto check = [](auto begin,auto end,const string& n,const string& b,bool* exist)
@@ -47,7 +47,7 @@ bool Manager::ComExist(string name, string brand)
     int half = _repository.size()/2;
     check(_repository.begin(),_repository.begin()+half,name,brand,&b);
     thread th(check,_repository.begin()+half
-             ,_repository.end(),name,brand,&c);
+             ,_repository.end(),name,brand,&c);   //多线程查询
     th.join();
     return b||c;
 

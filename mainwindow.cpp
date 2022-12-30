@@ -9,6 +9,7 @@
 #include"inputwidget.h"
 #include<QTimer>
 #include<QDateTime>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),rm(),saler()
@@ -54,6 +55,7 @@ MainWindow::~MainWindow()
 {
     rm.saveRepository();
     saler.saveTradeRecord();
+
     delete ui;
 }
 
@@ -65,7 +67,7 @@ void MainWindow::on_endBuyBtn_released()  //结算
 {
     if(ui->saledComsTab->rowCount()==0)
     {
-        QMessageBox::critical(this,"error",tr("还没有商品!"));
+        QMessageBox::critical(this,tr("错误"),tr("还没有商品!"));
         return ;
     }
     auto [trid,money] = saler.endBuy();
@@ -95,7 +97,7 @@ void MainWindow::on_sureAddBtn_released()  //购买商品
     }
     catch(runtime_error& re)
     {
-        QMessageBox::critical(this,"error",re.what());
+        QMessageBox::critical(this,tr("错误"),re.what());
     }
 }
 
@@ -104,8 +106,8 @@ void MainWindow::on_displayBtn_released()   //排序
 {
     Sorter sorter;
     int toKey[]={0,2,4,6};
-    int selKey = ui->sortKeyBox->currentIndex();
-    int selDir = ui->sortdirBox->currentIndex();
+    int selKey = ui->sortKeyBox->currentIndex();  //排序项
+    int selDir = ui->sortdirBox->currentIndex();  //升降序
     selDir==1?toKey[selKey]++:0;
     sorter((Sorter::SortKey)toKey[selKey],ui->comsTab);
 }
@@ -118,30 +120,43 @@ void MainWindow::on_searchBtn_released()  //查找交易记录
     auto trid = ui->trIdEdit->text().toStdString();
     try
     {
+        if(trid=="")
+        {
+            trid=saler.getFirstId();
+            ui->trIdEdit->setText(trid.c_str());
+        }
         saler.showRecord(trid,ui->comTabRec);
         ui->totalMoneyLcd->display(saler.getTradeIncome(trid));
     }
     catch(std::exception &e)
     {
-        QMessageBox::critical(this,"error!",QString(e.what()));
+        QMessageBox::critical(this,tr("错误"),QString(e.what()));
     }
 }
 
 
 void MainWindow::on_changeBtn_released()  //修改购买商品的数量
 {
-
-    ui->searchBtn->released();  //先查询再修改
     auto trid = ui->trIdEdit->text().toStdString();
+    try  //检查交易号合法性
+    {
+        saler.getPosition(trid);
+    }
+    catch(std::exception& e)
+    {
+        QMessageBox::critical(this,tr("错误"),QString(e.what()));
+        return;
+    }
+    ui->searchBtn->released();  //先查询再修改
     QStringList noList = saler.getNoList(trid);
-    QString no = QInputDialog::getItem(this,"select",tr("选择商品"),noList);
+    QString no = QInputDialog::getItem(this,tr("输入"),tr("选择商品"),noList);
     auto com = rm.searchNo(no.toStdString());
     bool ok;  //是否点击确认
-    int newAmount = QInputDialog::getInt(this,"input",tr("输入新购买数量") ,0,0,com->getAmount(),1,&ok);
+    int newAmount = QInputDialog::getInt(this,tr("输入"),tr("输入新购买数量") ,0,0,com->getAmount(),1,&ok);
     if(ok)
     {
         saler.reSetTrRecord(trid,com,newAmount);
-        QMessageBox::information(this,"information","The change was successful");
+        QMessageBox::information(this,tr("提示"),tr("商品数量修改成功"));
         ui->searchBtn->released();
     }
 }
@@ -150,13 +165,23 @@ void MainWindow::on_changeBtn_released()  //修改购买商品的数量
 
 void MainWindow::on_returnBtn_2_released()   //退货
 {
+    auto trid = ui->trIdEdit->text().toStdString();
+    try  //检查交易号合法性
+    {
+        saler.getPosition(trid);
+    }
+    catch(std::exception& e)
+    {
+        QMessageBox::critical(this,tr("错误"),QString(e.what()));
+        return;
+    }
     ui->searchBtn->released();  //先查询再退货
-    saler.reSetTrRecord(ui->trIdEdit->text().toStdString());
-    QMessageBox::information(this,"information","The return was successful");
+    saler.reSetTrRecord(trid);
+    QMessageBox::information(this,tr("提示"),tr("退货成功"));
 }
 
 
-void MainWindow::on_startSeachBtn_released()
+void MainWindow::on_startSeachBtn_released()   //查询商品
 {
     int searchKey = ui->searchKeyBox->currentIndex();
     QString qKey;
@@ -187,7 +212,7 @@ void MainWindow::on_startSeachBtn_released()
         }
         catch(runtime_error& re)
         {
-            QMessageBox::critical(this,"error",tr(re.what()));
+            QMessageBox::critical(this,tr("错误"),tr(re.what()));
             return;
         }
     }
@@ -255,11 +280,11 @@ void MainWindow::on_addBtn_released()  //新增商品
 
 void MainWindow::on_comsTab_itemDoubleClicked(QTableWidgetItem *item)
 {
-    QMessageBox::information(this,tr("information"),item->text());
+    QMessageBox::information(this,tr("信息"),item->text());
 }
 
 
-void MainWindow::on_deleteBtn_released()
+void MainWindow::on_deleteBtn_released()    //商品删除
 {
     bool ok;
     auto no = QInputDialog::getText(this,tr("删除商品"),tr("输入商品号"),QLineEdit::Normal,"",&ok).toStdString();
@@ -271,10 +296,10 @@ void MainWindow::on_deleteBtn_released()
         }
         catch(std::exception& e)
         {
-            QMessageBox::critical(this,"error",e.what());
+            QMessageBox::critical(this,tr("错误"),e.what());
             return;
         }
-        QMessageBox::information(this,"information",tr("删除成功！"));
+        QMessageBox::information(this,tr("提示"),tr("删除成功！"));
         ui->searchKeyBox->setCurrentIndex(4);
         ui->startSeachBtn->released(); //更新表单
     }
@@ -294,7 +319,7 @@ void MainWindow::on_lastBtn_released()  //查看上一条记录
     }
     catch(std::exception &e)
     {
-        QMessageBox::critical(this,"error",tr(e.what()));
+        QMessageBox::critical(this,tr("错误"),tr(e.what()));
     }
 }
 
@@ -311,7 +336,7 @@ void MainWindow::on_nextBtn_released() //查看下一条记录
     }
     catch(std::exception &e)
     {
-        QMessageBox::critical(this,"error",tr(e.what()));
+        QMessageBox::critical(this,tr("错误"),tr(e.what()));
     }
 }
 

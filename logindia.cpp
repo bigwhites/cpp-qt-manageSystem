@@ -11,7 +11,7 @@ LoginDia::LoginDia(QWidget *parent) :
     _canLog=false;
     ui->setupUi(this);
     this->setWindowIcon(QIcon(":/new/prefix1/rc/n133f35jvek.jpg"));
-    std::ifstream ifs("passWord.pwd",std::ios::binary);
+    std::ifstream ifs("passWord.pwd");
     if(ifs.is_open())
     {
         std::string buff;
@@ -59,7 +59,7 @@ void LoginDia::on_okBtn_released()  //确定密码
     }
     else
     {
-        QMessageBox::critical(this,"error",tr("密码错误，请重新输入"));
+        QMessageBox::critical(this,tr("错误"),tr("密码错误，请重新输入"));
     }
 
 }

@@ -61,7 +61,7 @@ QInputDialog
 </string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="mainPg">
        <widget class="QLabel" name="label">
@@ -537,8 +537,8 @@ color: rgb(255, 255, 255);</string>
         <property name="styleSheet">
          <string notr="true">.QTableWidget
 {
-	color: rgb(255, 255, 255);
-font: 17pt &quot;楷体&quot;;
+color: rgb(255, 255, 255);
+font: 13pt &quot;楷体&quot;;
 }</string>
         </property>
         <column>
@@ -879,7 +879,7 @@ color: rgb(0, 0, 0);
 font: 16pt &quot;楷体&quot;;</string>
         </property>
         <property name="text">
-         <string>tr-100001</string>
+         <string/>
         </property>
         <property name="placeholderText">
          <string>请输入订单号</string>
@@ -1150,7 +1150,7 @@ border-radius:8px</string>
          <string notr="true">.QTableWidget
 {
 	color: rgb(255, 255, 255);
-font: 17pt &quot;楷体&quot;;
+font: 13pt &quot;楷体&quot;;
 }</string>
         </property>
         <column>

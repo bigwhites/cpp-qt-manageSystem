@@ -15,7 +15,7 @@ public:
 	Commodity* searchNoAll(std::string no);  //寻找商品(包含不在售)
 	std::list<Commodity*> searchName(std::string name);  //按照名称寻找所有符合的商品
 	std::list<Commodity*> searchBrand(std::string brand);//按照品牌寻找所有符合的商品
-    std::list<Commodity*> searchClass(char classCh);     //按照类型搜索所有符合的商品;
+    std::list<Commodity*> searchClass(char classCh);     //按照类型搜索所有符合的商品
 	bool addFood(std::string name, std::string brand, //新增食物商品
 		std::string manufacturer, double price,
 		double cost, int amount, double weight,

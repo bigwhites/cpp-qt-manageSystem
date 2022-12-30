@@ -27,7 +27,7 @@ public:
     double locIncome(); //当前交易金额
 	void saveTradeRecord(void);  //保存交易记录
 	void loadTradeRecord(void);  //读取交易记录
-	void clearRecord();  //清空所有交易记录
+    void clearRecord();  //清空所有交易记录
     int getPosition(std::string trid);  //获取对应订单号的下标
 	void reSetTrRecord(const std::string& trid, Commodity* com = nullptr, int newAmount = 0);  //重设某商品的数量 默认全部退 和某商品全部退
     void showRecord(std::string trid,QTableWidget* table);//显示特定订单号的商品
@@ -35,6 +35,7 @@ public:
     QStringList getNoList(const string& trid);  //返回所有订单号的字符串
     std::string getLastTrid(const string& trid); //获取上一个订单号
     std::string getNextTrid(const string& trid);//获取下一个订单号
+    std::string getFirstId(void);  //获得第一个id
 };
 
 

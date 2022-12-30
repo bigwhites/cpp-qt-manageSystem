@@ -47,7 +47,7 @@ tuple<string,double> Saler::endBuy()
 
     _tradeIncome.push_back(_income);
 
-    _tradeComs.push_back(move(_coms));  // ? 不确定能不能这么写
+    _tradeComs.push_back(move(_coms));
     _coms.clear();
 
     _tradeId.push_back("Tr-" + to_string(++_maxId));
@@ -178,7 +178,7 @@ void Saler::reSetTrRecord(const string& trid, Commodity* com, int newAmount)
             }
             _tradeComs[pos][i]->setAmount(_tradeComs[pos][i]->getAmount() - delta);  //更新库存数量
             _tradeComs[pos][i]->setSaleCount(_tradeComs[pos][i]->getSaleCount() + delta);//更新商品的销量记录
-            if (newAmount == 0) ///等于0时清除数据
+            if (newAmount == 0) //等于0时清除数据
             {
                 _tradeComs[pos].erase(_tradeComs[pos].begin() + i);
                 _tradePrices[pos].erase(_tradePrices[pos].begin() + i);
@@ -241,10 +241,10 @@ string Saler::getLastTrid(const string &trid)
     --pos;
     for(;pos>=0;--pos)
     {
-       if(_tradeComs[pos].size()!=0)
-       {
-           return _tradeId[pos];
-       }
+        if(_tradeComs[pos].size()!=0)
+        {
+            return _tradeId[pos];
+        }
     }
     throw runtime_error("没有上一条！");
 }
@@ -253,14 +253,30 @@ string Saler::getNextTrid(const string &trid)
 {
     int pos = this->getPosition(trid);
     ++pos;
-    for(;pos<_tradeComs.size();++pos)
+    for(;pos< _tradeComs.size();++pos)
     {
-       if(_tradeComs[pos].size()!=0)
-       {
-           return _tradeId[pos];
-       }
+        if(_tradeComs[pos].size()!=0)
+        {
+            return _tradeId[pos];
+        }
     }
     throw runtime_error("没有下一条！");
+}
+
+string Saler::getFirstId()
+{
+    if(_tradeId.empty())
+    {
+        throw runtime_error("没有交易记录");
+    }
+    for(int i=0;i<_tradeId.size();++i)
+    {
+        if(_tradeComs[i].size()!=0)
+        {
+            return  _tradeId[i];
+        }
+    }
+    return "";
 }
 
 

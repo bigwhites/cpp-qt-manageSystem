@@ -77,16 +77,13 @@ bool RepManager::addFood(std::string name, std::string brand,
                          std::string manufacturer, double price,
                          double cost, int amount, double weight, Food::FoodKind kind)
 {
-    if (1) //TODO
-    {
-        Commodity* f = new Food(name, brand, manufacturer,
-                                price, cost, amount, true, 0, weight, kind);
-        _repository.push_back(f);
-        _noComMap.insert(make_pair(f->getNo(), f));
-        _sumCost+=amount*cost;
-        return true;
-    }
-    return false;
+
+    Commodity* f = new Food(name, brand, manufacturer,
+                            price, cost, amount, true, 0, weight, kind);
+    _repository.push_back(f);
+    _noComMap.insert(make_pair(f->getNo(), f));
+    _sumCost+=amount*cost;
+    return true;
 }
 
 bool RepManager::addCosmetic(std::string name, std::string brand, 
@@ -119,16 +116,13 @@ bool RepManager::addDaily(string name, string brand, string manufacturer,
                           double price, double cost, int amount,
                           double weight, Daily::DailyKind kind)
 {
-    if(1)
-    {
-        Commodity* d = new Daily(name, brand, manufacturer,
-                                 price, cost, amount, true, 0, weight, kind);
-        _repository.push_back(d);
-        _noComMap.insert(make_pair(d->getNo(), d));
-        _sumCost+=amount*cost;
-        return true;
-    }
-    return false;
+
+    Commodity* d = new Daily(name, brand, manufacturer,
+                             price, cost, amount, true, 0, weight, kind);
+    _repository.push_back(d);
+    _noComMap.insert(make_pair(d->getNo(), d));
+    _sumCost+=amount*cost;
+    return true;
 }
 
 void RepManager::setAmount(std::string no, int newAmount)

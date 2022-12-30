@@ -35,7 +35,7 @@ void Sorter::_sort(SortKey key)
 
 	if ((int)key == 0 || (int)key == 1)
 	{
-		cmp = [](Commodity* c1, Commodity* c2)
+        cmp = [](Commodity* c1, Commodity* c2)
 		{
 			return c1->getPrice() < c2->getPrice();
 		};

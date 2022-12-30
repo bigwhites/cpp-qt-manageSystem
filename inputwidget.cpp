@@ -67,7 +67,7 @@ void InputWidget::on_okBtn_released()  //录入信息
     }
     else //新增
     {
-        if(rm.ComExist(name,brand))
+        if(rm.comExist(name,brand))  //查重 品牌+商品名 相同为重复
         {
             QMessageBox::information(this,tr("提示"),tr("该商品已存在！"));
             this->close();
