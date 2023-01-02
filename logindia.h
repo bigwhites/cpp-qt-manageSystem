@@ -24,6 +24,8 @@ private slots:
 
     void on_chPwdEdit_released();
 
+    void on_aboutBtn_released();
+
 private:
     Ui::LoginDia *ui;
     QString _passWord;

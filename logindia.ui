@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>595</width>
-    <height>284</height>
+    <width>692</width>
+    <height>409</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>595</width>
-    <height>284</height>
+    <width>692</width>
+    <height>409</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>595</width>
-    <height>284</height>
+    <width>692</width>
+    <height>409</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -32,8 +32,8 @@ background-color: rgb(38, 38, 38);</string>
   <widget class="QPushButton" name="okBtn">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>230</y>
+     <x>140</x>
+     <y>280</y>
      <width>151</width>
      <height>41</height>
     </rect>
@@ -54,8 +54,8 @@ border-radius:8px</string>
   <widget class="QPushButton" name="cancelBtn">
    <property name="geometry">
     <rect>
-     <x>430</x>
-     <y>230</y>
+     <x>360</x>
+     <y>280</y>
      <width>151</width>
      <height>41</height>
     </rect>
@@ -78,10 +78,10 @@ border-radius:8px</string>
   <widget class="QLineEdit" name="accountEdit">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>70</y>
-     <width>161</width>
-     <height>41</height>
+     <x>340</x>
+     <y>100</y>
+     <width>221</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -92,10 +92,10 @@ font: 16pt &quot;Microsoft YaHei UI&quot;;</string>
   <widget class="QLineEdit" name="pwdEdit">
    <property name="geometry">
     <rect>
-     <x>230</x>
-     <y>150</y>
-     <width>161</width>
-     <height>41</height>
+     <x>340</x>
+     <y>200</y>
+     <width>221</width>
+     <height>51</height>
     </rect>
    </property>
    <property name="styleSheet">
@@ -109,8 +109,8 @@ font: 16pt &quot;Microsoft YaHei UI&quot;;</string>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>110</x>
-     <y>70</y>
+     <x>220</x>
+     <y>110</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -127,8 +127,8 @@ color: rgb(255,255,255);
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>100</x>
-     <y>150</y>
+     <x>220</x>
+     <y>200</y>
      <width>81</width>
      <height>41</height>
     </rect>
@@ -145,8 +145,8 @@ color: rgb(255, 255, 255);
   <widget class="QPushButton" name="chPwdEdit">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>230</y>
+     <x>140</x>
+     <y>350</y>
      <width>151</width>
      <height>41</height>
     </rect>
@@ -168,19 +168,55 @@ border-radius:8px</string>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>180</x>
+     <x>200</x>
      <y>10</y>
-     <width>251</width>
-     <height>41</height>
+     <width>301</width>
+     <height>61</height>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">font: 22pt &quot;楷体&quot;;
+    <string notr="true">font: 25pt &quot;楷体&quot;;
 color: rgb(255,255, 255);
 </string>
    </property>
    <property name="text">
     <string>超市商品管理系统</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="imgLab">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>130</y>
+     <width>90</width>
+     <height>90</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="aboutBtn">
+   <property name="geometry">
+    <rect>
+     <x>360</x>
+     <y>350</y>
+     <width>151</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">
+background-color: rgb(17, 145, 255);
+color: rgb(255, 255, 255);
+font: 9pt &quot;楷体&quot;;
+font-size:25px;
+
+border:none;
+border-radius:8px</string>
+   </property>
+   <property name="text">
+    <string>关于系统</string>
    </property>
   </widget>
  </widget>

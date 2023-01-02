@@ -13,7 +13,7 @@ protected:
 	static Commodities _repository;  //当前库存
     static double _sumRevenue; //营业额
     static double _sumCost;    //成本
-	static int _useCount;  //资源的使用计数
+    static double _useCount;  //资源的使用计数
 public:
 	Manager();
 	virtual ~Manager(); 

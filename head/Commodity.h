@@ -27,7 +27,7 @@ public:
     std::string getManufacturer();
     double getPrice(void);
     void setPrice(double p);
-    int getCost(void);
+    double getCost(void);
     std::string getNo(void);
     std::string getName(void);
     std::string getBrand(void);

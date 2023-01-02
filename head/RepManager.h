@@ -3,7 +3,7 @@
 #include<fstream>
 #include<list>
 #include<map>
-class RepManager :public Manager
+class RepManager :public Manager   //库存管理类
 {
 protected:
     static  map<std::string, Commodity*> _noComMap;  //编号到商品的单射

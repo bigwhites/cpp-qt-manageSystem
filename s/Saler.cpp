@@ -56,12 +56,12 @@ tuple<string,double> Saler::endBuy()
     return {*(_tradeId.end()-1),res}; //返回商品的总金额
 }
 
-bool Saler::buy(Commodity* com, int amount)
+void Saler::buy(Commodity* com, int amount)
 {
     if (com==nullptr || amount > com->getAmount())
     {
-        throw runtime_error("库存不足");
-        return false;  //商品库存不足已买这么多  或不存在该商品
+        throw runtime_error("库存不足"); //商品库存不足已买这么多  或不存在该商品
+
     }
     else
     {
@@ -86,7 +86,6 @@ bool Saler::buy(Commodity* com, int amount)
         _sumRevenue += (com->getPrice()) * amount; //更新总营业额
         _income += (com->getPrice()) * amount;
     }
-    return  true;
 }
 
 double Saler::locIncome()
@@ -128,9 +127,9 @@ void Saler::loadTradeRecord(void)
     while (ifs >> trId >> trIncome >> n)
     {
         Manager::_sumRevenue += trIncome;  //总营业额增加
-        _tradeComs.push_back(move(Commodities(n)));
-        _tradeAmount.push_back(move(vector<int>(n)));
-        _tradePrices.push_back(move(vector<double>(n)));
+        _tradeComs.push_back(Commodities(n));
+        _tradeAmount.push_back(vector<int>(n));
+        _tradePrices.push_back(vector<double>(n));
         _tradeId.push_back(trId);
         _tradeIncome.push_back(trIncome);
         for (int j = 0; j < n; ++j)
@@ -210,7 +209,7 @@ void Saler::showRecord(string trid, QTableWidget *table)
         QString qNo=com->getNo().c_str();
         table->setItem(row,0,new QTableWidgetItem(qNo));
         table->setItem(row,1,new QTableWidgetItem(com->getName().c_str()));
-        table->setItem(row,2,new QTableWidgetItem((qNo[0])));
+        table->setItem(row,2,new QTableWidgetItem(com->getClassStr().c_str()));
         table->setItem(row,3,new QTableWidgetItem(QString::number(_tradePrices[pos][i])));
         table->setItem(row,4,new QTableWidgetItem(QString::number(_tradeAmount[pos][i])));
         double totalPrice = _tradePrices[pos][i]*_tradeAmount[pos][i];

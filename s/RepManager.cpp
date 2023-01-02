@@ -42,7 +42,7 @@ std::list<Commodity*> RepManager::searchName(std::string name)
             resList.push_back(com);
         }
     }
-    return move(resList);
+    return resList;
 }
 
 std::list<Commodity*> RepManager::searchBrand(std::string brand)
@@ -55,7 +55,7 @@ std::list<Commodity*> RepManager::searchBrand(std::string brand)
             resList.push_back(com);
         }
     }
-    return move(resList);
+    return resList;
 }
 
 std::list<Commodity *> RepManager::searchClass(char classCh)
@@ -69,7 +69,7 @@ std::list<Commodity *> RepManager::searchClass(char classCh)
             resList.push_back(com);
         }
     } );
-    return move(resList);
+    return resList;
 }
 
 
@@ -160,7 +160,7 @@ void RepManager::loadRepository(void)
             f = new Food;
             ifs >> *f;
             _repository.push_back((Commodity*)f);
-            _noComMap.insert(make_pair(f->getNo(), (Commodity*)f));
+            if(f->onSale()) _noComMap.insert(make_pair(f->getNo(), (Commodity*)f));
             _sumCost+=f->getCost()*f->getAmount();
         }
     }
@@ -175,7 +175,7 @@ void RepManager::loadRepository(void)
             c = new Cosmetic;
             ifs >> *c;
             _repository.push_back((Commodity*)c);
-            _noComMap.insert(make_pair(c->getNo(), (Commodity*)c));
+            if(c->onSale()) _noComMap.insert(make_pair(c->getNo(), (Commodity*)c));
             _sumCost+=c->getCost()*c->getAmount();
 
         }
@@ -191,7 +191,7 @@ void RepManager::loadRepository(void)
             b = new Beverage;
             ifs >> *b;
             _repository.push_back((Commodity*)b);
-            _noComMap.insert(make_pair(b->getNo(), (Commodity*)b));
+            if(b->onSale()) _noComMap.insert(make_pair(b->getNo(), (Commodity*)b));
             _sumCost+=b->getCost()*b->getAmount();
         }
     }
@@ -206,7 +206,7 @@ void RepManager::loadRepository(void)
             d = new Daily;
             ifs >> *d;
             _repository.push_back((Commodity*)d);
-            _noComMap.insert(make_pair(d->getNo(), (Commodity*)d));
+            if(d->onSale()) _noComMap.insert(make_pair(d->getNo(), (Commodity*)d));
             _sumCost+=d->getCost()*d->getAmount();
         }
     }
@@ -263,7 +263,6 @@ void RepManager::saveRepository(void)
     {
 
         f->close();
-
         delete f;
     }
     

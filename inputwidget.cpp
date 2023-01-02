@@ -53,6 +53,12 @@ void InputWidget::on_okBtn_released()  //录入信息
     double cost = ui->costBox->value();
     double weiOrCapa=ui->weightOrCapaBox->value();
     int amount = ui->amountBox->value();
+    if(brand==""||manufacturer==""||brand==""||cost<=0||
+            price<=0||weiOrCapa<=0||amount<=0)
+    {
+        QMessageBox::critical(this,tr("错误"),tr("输入信息有误，请重新输入！"));
+        return ;
+    }
     if(_com) //修改
     {
         std::string no = _com->getNo();

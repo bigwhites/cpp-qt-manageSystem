@@ -7,7 +7,7 @@ using namespace std;
 double Manager::_sumCost = 0;
 double Manager::_sumRevenue = 0;
 Manager::Commodities Manager::_repository;
-int Manager::_useCount = 0;
+double Manager::_useCount = 0;
 
 Manager::Manager()
 {
@@ -37,7 +37,7 @@ bool Manager::comExist(string name, string brand)  //商品查重
     {
         for(auto it=begin;it!=end;++it)
         {
-            if((*it)->getName()==n && (*it)->getBrand()==b)
+            if((*it)->getName()==n && (*it)->getBrand()==b && (*it)->onSale())
             {
                 *exist=true;
                 return;
@@ -45,12 +45,11 @@ bool Manager::comExist(string name, string brand)  //商品查重
         }
     };
     int half = _repository.size()/2;
-    check(_repository.begin(),_repository.begin()+half,name,brand,&b);
     thread th(check,_repository.begin()+half
              ,_repository.end(),name,brand,&c);   //多线程查询
+    check(_repository.begin(),_repository.begin()+half,name,brand,&b);
     th.join();
     return b||c;
-
 }
 
 double Manager::getSumRevenue()

@@ -39,7 +39,7 @@ void Commodity::setPrice(double p)
     _price = p;
 }
 
-int Commodity::getCost(void)
+double Commodity::getCost(void)
 {
     return _cost;
 }

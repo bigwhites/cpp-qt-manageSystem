@@ -1,5 +1,13 @@
 <RCC>
     <qresource prefix="/new/prefix1">
         <file>rc/n133f35jvek.jpg</file>
+        <file>rc/9954a5f7dfd64e7bafc23eda4e8b9487.gif</file>
+        <file>rc/key.png</file>
+        <file>rc/buyCar.png</file>
+        <file>rc/money.png</file>
+        <file>rc/show.gif</file>
+        <file>rc/manage.gif</file>
     </qresource>
+    <qresource prefix="/1"/>
+    <qresource prefix="/"/>
 </RCC>

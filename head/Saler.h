@@ -4,7 +4,7 @@
 #include<tuple>
 #include"ui_mainwindow.h"
 
-class Saler : public Manager
+class Saler : public Manager  //销售管理类
 {
 protected:
 	static vector<Commodities>_tradeComs;  //交易商品记录
@@ -23,7 +23,7 @@ protected:
 public:
 	Saler();
     tuple<string,double> endBuy();    //结束购买
-	bool buy(Commodity* com, int amount = 1);
+    void buy(Commodity* com, int amount = 1);
     double locIncome(); //当前交易金额
 	void saveTradeRecord(void);  //保存交易记录
 	void loadTradeRecord(void);  //读取交易记录
