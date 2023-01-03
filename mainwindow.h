@@ -3,11 +3,8 @@
 
 #include <QMainWindow>
 
-#include"head/commodities.h"
-#include"head/Manager.h"
 #include"head/RepManager.h"
 #include"head/Saler.h"
-#include"head/Food.h"
 #include"head/Sorter.h"
 
 QT_BEGIN_NAMESPACE

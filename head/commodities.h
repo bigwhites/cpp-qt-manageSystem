@@ -4,3 +4,4 @@
 #include"Cosmetic.h"
 #include "Daily.h"
 #include "Beverage.h"
+constexpr auto u = 1;
